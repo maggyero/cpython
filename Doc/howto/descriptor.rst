@@ -284,6 +284,7 @@ object.  In pure Python, it works like this::
             if obj is None:
                 return self
             return types.MethodType(self, obj)
+            # similar to: return lambda *args, **kwargs: self(obj, *args, **kwargs)
 
 Running the interpreter shows how the function descriptor works in practice::
 
@@ -438,3 +439,4 @@ Using the non-data descriptor protocol, a pure Python version of
             if klass is None:
                 klass = type(obj)
             return types.MethodType(self.f, klass)
+            # similar to: return lambda *args, **kwargs: self.f(klass, *args, **kwargs)
